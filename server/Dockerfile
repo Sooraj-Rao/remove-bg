@@ -4,15 +4,15 @@ FROM python:3.11
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy everything from `server/` into `/app/`
-COPY server /app
+# ✅ Fix: Copy everything inside `server/` into `/app/`
+COPY . /app
 
-# Install dependencies from requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir onnxruntime  
 
-# Expose the port FastAPI runs on
+# Expose FastAPI port
 EXPOSE 8000
 
-# Run FastAPI app
+# Start FastAPI server
 CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
