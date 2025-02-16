@@ -99,3 +99,10 @@ async def remove_bg_file(
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8000"))
     uvicorn.run(app, host="0.0.0.0", port=port)
+
+
+
+
+
+# docker build -t my-fastapi-app server/
+# docker run -p 8000:8000 my-fastapi-app
